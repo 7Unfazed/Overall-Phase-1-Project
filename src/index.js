@@ -58,4 +58,27 @@ function populateTable(data) {
     });
 }
 
+function filterUniversities() {
+    var inputName, inputState, filterName, filterState, table, tr, tdName, tdState, i, txtValueName, txtValueState;
+    inputName = document.getElementById("nameFilter");
+    inputState = document.getElementById("stateFilter");
+    filterName = inputName.value.toUpperCase();
+    filterState = inputState.value.toUpperCase();
+    table = document.getElementById("universities");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        tdName = tr[i].getElementsByTagName("td")[0];
+        tdState = tr[i].getElementsByTagName("td")[1];
+        if (tdName && tdState) {
+            txtValueName = tdName.textContent || tdName.innerText;
+            txtValueState = tdState.textContent || tdState.innerText;
+            if (txtValueName.toUpperCase().indexOf(filterName) > -1 && txtValueState.toUpperCase().indexOf(filterState) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+  }
+
 
