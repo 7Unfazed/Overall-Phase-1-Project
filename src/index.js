@@ -1,7 +1,8 @@
+
 document.addEventListener("DOMContentLoaded", function () {
     fetchDataAndPopulateTable();
 });
-
+//This function fetches the data and throws an error if any problem occurs
 function fetchDataAndPopulateTable() {
     var myUniversityUrl = 'https://raw.githubusercontent.com/Hipo/university-domains-list/master/world_universities_and_domains.json';
   
@@ -19,6 +20,7 @@ function fetchDataAndPopulateTable() {
         console.error('There was a problem with the fetch operation:', error);
       });
 }
+//this function creates new rows and populates them with the fetched data
 function populateTable(data) {
     var tableBody = document.querySelector("#universities tbody");
 
@@ -44,7 +46,7 @@ function populateTable(data) {
         var cell4 = document.createElement("td");
         cell4.textContent = item.alpha_two_code;
         newRow.appendChild(cell4);
-
+        //Create a button for cell 5 inorder to visit the website of the university
         var cell5 = document.createElement("td");
         var button = document.createElement("button");
         button.textContent = "Website";
@@ -57,7 +59,7 @@ function populateTable(data) {
         tableBody.appendChild(newRow);
     });
 }
-
+//Function filters the the whole document according to the users input
 function filterUniversities() {
     var inputName, inputState, filterName, filterState, table, tr, tdName, tdState, i, txtValueName, txtValueState;
     inputName = document.getElementById("nameFilter");
