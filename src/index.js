@@ -132,6 +132,7 @@ function filterUniversities() {
     var section = document.getElementById('add');
     section.scrollIntoView({ behavior: 'smooth' });
   }
+  //adds an event listener to the buttons
   document.getElementById('scrollButton').addEventListener('click', scrollToSection);
 //Function scrolls the user to the top of the page
   function scrollToTop() {
