@@ -120,4 +120,8 @@ function filterUniversities() {
         document.getElementById("website").value = "";
     });
   }
-
+  function scrollToSection() {
+    var section = document.getElementById('add');
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+  document.getElementById('scrollButton').addEventListener('click', scrollToSection);
