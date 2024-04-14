@@ -1,6 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     fetchDataAndPopulateTable();
+    addUni();
 });
 //This function fetches the data and throws an error if any problem occurs
 function fetchDataAndPopulateTable() {
@@ -82,5 +83,41 @@ function filterUniversities() {
         }
     }
   }
-
+  function addUni() {
+    document.getElementById('addUniversityForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const country = document.getElementById('country').value;
+        const state = document.getElementById('state').value;
+        const countrycode = document.getElementById('code').value;
+        const website = document.getElementById('website').value;
+  
+        var table = document.querySelector("#universities tbody");
+        var newRow = table.insertRow(table.rows.length);
+        var cellsContent = [name, country, state, countrycode, `<a href="${website}" target="_blank"><button>Visit</button></a>`];
+  
+        cellsContent.forEach(content => {
+            var cell = newRow.insertCell();
+            cell.innerHTML = content;
+        });
+  
+        fetch('http://localhost:3000/api/universities', { // Change the URL to your server URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, country, state, countrycode, website }),
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+  
+        // Clear form fields
+        document.getElementById("name").value = "";
+        document.getElementById("country").value = "";
+        document.getElementById("state").value = "";
+        document.getElementById("code").value = "";
+        document.getElementById("website").value = "";
+    });
+  }
 
