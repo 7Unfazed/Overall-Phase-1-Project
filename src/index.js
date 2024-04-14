@@ -125,3 +125,9 @@ function filterUniversities() {
     section.scrollIntoView({ behavior: 'smooth' });
   }
   document.getElementById('scrollButton').addEventListener('click', scrollToSection);
+
+  function scrollToTop() {
+    var section = document.getElementById('universities');
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+  document.getElementById('toThetop').addEventListener('click', scrollToTop);
