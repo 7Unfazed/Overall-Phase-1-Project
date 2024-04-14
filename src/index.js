@@ -1,4 +1,4 @@
-
+//This executes the following functions once the page is fully loaded
 document.addEventListener("DOMContentLoaded", function () {
     fetchDataAndPopulateTable();
     addUni();
@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 //This function fetches the data and throws an error if any problem occurs
 function fetchDataAndPopulateTable() {
     var myUniversityUrl = 'https://raw.githubusercontent.com/Hipo/university-domains-list/master/world_universities_and_domains.json';
-  
+  //Fetches the data from the API and executes the function "populateTable(data)"
     fetch(myUniversityUrl)
       .then(response => {
         if (!response.ok) {
@@ -63,11 +63,15 @@ function populateTable(data) {
 //Function filters the the whole document according to the users input
 function filterUniversities() {
     var inputName, inputState, filterName, filterState, table, tr, tdName, tdState, i, txtValueName, txtValueState;
+   // These variables store references to HTML input elements with IDs "nameFilter" and "stateFilter" respectively.
     inputName = document.getElementById("nameFilter");
     inputState = document.getElementById("stateFilter");
+   //These variables store the uppercase versions of the values entered by the user in the input fields.
     filterName = inputName.value.toUpperCase();
     filterState = inputState.value.toUpperCase();
+   //This variable stores a reference to the HTML table with the ID "universities".
     table = document.getElementById("universities");
+
     tr = table.getElementsByTagName("tr");
     for (i = 0; i < tr.length; i++) {
         tdName = tr[i].getElementsByTagName("td")[0];
@@ -75,6 +79,7 @@ function filterUniversities() {
         if (tdName && tdState) {
             txtValueName = tdName.textContent || tdName.innerText;
             txtValueState = tdState.textContent || tdState.innerText;
+            //This part checks if the uppercase version of the university state contains the uppercase filter string provided by the user.
             if (txtValueName.toUpperCase().indexOf(filterName) > -1 && txtValueState.toUpperCase().indexOf(filterState) > -1) {
                 tr[i].style.display = "";
             } else {
@@ -83,9 +88,11 @@ function filterUniversities() {
         }
     }
   }
+  //Function adds universities to the table and to the API
   function addUni() {
     document.getElementById('addUniversityForm').addEventListener('submit', function (event) {
         event.preventDefault();
+        //retrieve the values entered by the user in various input fields of the form
         const name = document.getElementById('name').value;
         const country = document.getElementById('country').value;
         const state = document.getElementById('state').value;
@@ -120,12 +127,13 @@ function filterUniversities() {
         document.getElementById("website").value = "";
     });
   }
+  //Function scrolls the page to the place where the form is filled.
   function scrollToSection() {
     var section = document.getElementById('add');
     section.scrollIntoView({ behavior: 'smooth' });
   }
   document.getElementById('scrollButton').addEventListener('click', scrollToSection);
-
+//Function scrolls the user to the top of the page
   function scrollToTop() {
     var section = document.getElementById('universities');
     section.scrollIntoView({ behavior: 'smooth' });
