@@ -94,7 +94,7 @@ function filterUniversities() {
   
         var table = document.querySelector("#universities tbody");
         var newRow = table.insertRow(table.rows.length);
-        var cellsContent = [name, country, state, countrycode, `<a href="${website}" target="_blank"><button>Visit</button></a>`];
+        var cellsContent = [name, country, state, countrycode, `<a href="${website}" target="_blank"><button>Website</button></a>`];
   
         cellsContent.forEach(content => {
             var cell = newRow.insertCell();
