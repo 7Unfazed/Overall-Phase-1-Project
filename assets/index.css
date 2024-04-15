@@ -1,5 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f8f8;
     margin: 20px;
 }
 table {
@@ -31,4 +32,33 @@ button {
 }
 button:hover {
     opacity: 0.8;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.header__title {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.header__button {
+    background-color: #fff;
+    color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.header__button:hover {
+    background-color: #e6e6e6;
+}
+
+.header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
 }
